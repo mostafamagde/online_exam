@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam/features/profile/presentation/view/Screens/profile_screen.dart';
 
 import '../../../core/navigation_cubit/navigation_cubit.dart';
 import '../../../core/routes_manager/route_generator.dart';
@@ -17,9 +18,10 @@ class LayoutView extends StatelessWidget {
       builder: (context, state) {
         final NavigationCubit cubit = NavigationCubit.get(context);
         final List<Widget> screens = [
-          ExploreView(),
-          ResultView()
 
+          ExploreView(),
+          ResultView(),
+          ProfileScreen(),
         ];
         return Scaffold(
           bottomNavigationBar:BottomNavigationBar(
@@ -27,21 +29,48 @@ class LayoutView extends StatelessWidget {
 
             currentIndex: state.index,
             onTap: (value) => cubit.selectTab(value),
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                label: "Explore",
+                icon: Icon(Icons.home, color: Colors.grey),
+                activeIcon: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade100,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Icon(Icons.home, color: Colors.blue),
+                ),
+                label: 'Explore',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today_sharp),
-                label: "Result",
+                icon: Icon(Icons.edit_note, color: Colors.grey),
+                activeIcon: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade100,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Icon(Icons.edit_note, color: Colors.blue),
+                ),
+                label: 'Result',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: "Profile",
+                icon: Icon(Icons.person_outline, color: Colors.grey),
+                activeIcon: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade100,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Icon(Icons.person, color: Colors.blue),
+                ),
+                label: 'Profile',
               ),
-
             ],
+            selectedItemColor: Colors.blue,
+            unselectedItemColor: Colors.grey,
+            backgroundColor: Colors.grey.shade100,
+            type: BottomNavigationBarType.fixed,
 
           ),
           body: screens[state.index],

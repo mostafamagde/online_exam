@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/routes_manager/routes_names.dart';
+import 'package:online_exam/features/profile/presentation/view/Screens/edit_profile_screen.dart';
+import 'package:online_exam/features/profile/presentation/view/Screens/profile_screen.dart';
 
 import '../../features/layout/presentation/layout_view.dart';
+import '../../features/profile/presentation/view/Screens/reset_password_screen.dart';
 import '../navigation_cubit/navigation_cubit.dart';
 
 class RouteGenerator {
@@ -11,13 +14,21 @@ class RouteGenerator {
     switch (settings.name) {
       case RoutesNames.layout:
         return MaterialPageRoute(
-          builder: (context) =>
-              BlocProvider(
+          builder:
+              (context) => BlocProvider(
                 create: (context) => NavigationCubit(),
                 child: LayoutView(),
               ),
           settings: settings,
         );
+      case RoutesNames.profile:
+        return MaterialPageRoute(builder: (_) => ProfileScreen());
+
+      case RoutesNames.editProfile:
+        return MaterialPageRoute(builder: (_) => EditProfileScreen());
+
+      case RoutesNames.resetPassword:
+        return MaterialPageRoute(builder: (_)=> ResetPasswordScreen());
 
       default:
         return MaterialPageRoute(
