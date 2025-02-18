@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../features/profile/data/remot_datasource/profile_api.dart';
+
+import '../../features/profile/data/remote_datasource/profile_api.dart';
 
 @module
 abstract class RegisterModule {

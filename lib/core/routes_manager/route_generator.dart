@@ -6,7 +6,7 @@ import 'package:online_exam/features/profile/presentation/view/Screens/edit_prof
 import 'package:online_exam/features/profile/presentation/view/Screens/profile_screen.dart';
 
 import '../../features/layout/presentation/layout_view.dart';
-import '../../features/profile/presentation/view/Screens/reset_password_screen.dart';
+import '../../features/profile/presentation/view/Screens/change_password_screen.dart';
 import '../navigation_cubit/navigation_cubit.dart';
 
 class RouteGenerator {
@@ -27,8 +27,8 @@ class RouteGenerator {
       case RoutesNames.editProfile:
         return MaterialPageRoute(builder: (_) => EditProfileScreen());
 
-      case RoutesNames.resetPassword:
-        return MaterialPageRoute(builder: (_)=> ResetPasswordScreen());
+      case RoutesNames.changePassword:
+        return MaterialPageRoute(builder: (_)=> ChangePasswordScreen());
 
       default:
         return MaterialPageRoute(

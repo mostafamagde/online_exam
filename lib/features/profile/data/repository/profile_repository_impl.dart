@@ -1,11 +1,12 @@
 import 'dart:developer';
 
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/features/profile/data/models/change_password_request.dart';
 
 import '../../domain/repository/profile_repository.dart';
 import '../../presentation/view_model/profile_state.dart';
 import '../models/user_model.dart';
-import '../remot_datasource/profile_api.dart';
+import '../remote_datasource/profile_api.dart';
 
 @Injectable(as:ProfileRepository)
 class ProfileRepositoryImpl implements ProfileRepository {
@@ -33,4 +34,22 @@ class ProfileRepositoryImpl implements ProfileRepository {
     } catch (e) {
       return EditProfileError("Failed to update profile");
     }
-  }}
+  }
+
+  Future<ChangePasswordState> changePassword(ChangePasswordRequest password, String token) async {
+    try {
+      final response = await api.changePassword(token, password);
+
+      if (response.response.statusCode == 200) {
+        return ChangePasswordSuccess("Password Changed Successfully");
+      } else {
+        return ChangePasswordError("Failed to change password");
+      }
+    } catch (e) {
+      log("Error changing password: $e");
+      return ChangePasswordError("An unexpected error occurred while changing the password");
+    }
+  }
+}
+
+

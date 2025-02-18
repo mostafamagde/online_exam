@@ -77,7 +77,7 @@ class _ProfileApi implements ProfileApi {
   }
 
   @override
-  Future<void> changePassword(
+  Future<HttpResponse<dynamic>> changePassword(
     String token,
     ChangePasswordRequest password,
   ) async {
@@ -87,7 +87,7 @@ class _ProfileApi implements ProfileApi {
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(password.toJson());
-    final _options = _setStreamType<void>(
+    final _options = _setStreamType<HttpResponse<dynamic>>(
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -97,7 +97,10 @@ class _ProfileApi implements ProfileApi {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    await _dio.fetch<void>(_options);
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

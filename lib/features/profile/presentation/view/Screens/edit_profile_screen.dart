@@ -19,7 +19,9 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  String token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGFjMDJkODZhMDI0ZjA2ZWEyMDdjNCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM3MTQ2NDEzfQ.ju8fNT_6jQvYo_mxJpWMep25hrSqgABFeaqdfnQi4T8';
+  String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZWVmODZhMDI0ZjA2ZWEyN2Q0NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM5ODQ5NjYyfQ.JWluZEm-y7VTllOUZTJDseXwam2jlGLdhaOi0bTv-9Y";
+
+
   final _formKey = GlobalKey<FormState>(); // Key for form validation
 
   TextEditingController usernameController = TextEditingController();
@@ -130,7 +132,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                             );
 
-                            context.read<EditProfileCubit>().editProfile("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGFjMDJkODZhMDI0ZjA2ZWEyMDdjNCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM3MTQ2NDEzfQ.ju8fNT_6jQvYo_mxJpWMep25hrSqgABFeaqdfnQi4T8", updatedUser);
+                            context.read<EditProfileCubit>().editProfile(token, updatedUser);
                           }
                         },
                       );

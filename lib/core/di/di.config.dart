@@ -13,11 +13,13 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../features/profile/data/remot_datasource/profile_api.dart' as _i917;
+import '../../features/profile/data/remote_datasource/profile_api.dart' as _i917;
 import '../../features/profile/data/repository/profile_repository_impl.dart'
     as _i309;
 import '../../features/profile/domain/repository/profile_repository.dart'
     as _i364;
+import '../../features/profile/presentation/view_model/change_password_cubit.dart'
+    as _i389;
 import '../../features/profile/presentation/view_model/edit_profile_cubit.dart'
     as _i589;
 import '../../features/profile/presentation/view_model/profile_cubit.dart'
@@ -42,6 +44,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i542.ProfileCubit>(
       () => _i542.ProfileCubit(gh<_i364.ProfileRepository>()),
+    );
+    gh.factory<_i389.ChangePasswordCubit>(
+      () => _i389.ChangePasswordCubit(gh<_i364.ProfileRepository>()),
     );
     return this;
   }

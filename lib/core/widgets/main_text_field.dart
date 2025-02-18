@@ -24,12 +24,13 @@ class MainTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 30),
-      child: Container(
+      child: SizedBox(
         width: width ?? MediaQuery.of(context).size.width * .9,
         child: TextFormField(
           validator: validator,
           readOnly: readOnly ?? false,
           controller: controller,
+          obscureText: isObscured,
           decoration: InputDecoration(
             suffixIcon: suffixIcon,
             labelText: label,

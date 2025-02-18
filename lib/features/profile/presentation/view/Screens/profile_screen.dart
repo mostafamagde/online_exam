@@ -17,7 +17,9 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   late UserModel user;
-  String token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGFjMDJkODZhMDI0ZjA2ZWEyMDdjNCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM3MTQ2NDEzfQ.ju8fNT_6jQvYo_mxJpWMep25hrSqgABFeaqdfnQi4T8';
+  String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZWVmODZhMDI0ZjA2ZWEyN2Q0NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM5ODQ5NjYyfQ.JWluZEm-y7VTllOUZTJDseXwam2jlGLdhaOi0bTv-9Y";
+
+
   @override
   void initState() {
     super.initState();
@@ -87,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         controller: TextEditingController(text: '*******'),
                         label: ' Password ',
                         readOnly: true,
-                        suffixIcon: TextButton(child: Text('change',style: TextStyle(color: Colors.blueAccent)),onPressed: (){Navigator.pushNamed(context,RoutesNames.resetPassword);} ,),
+                        suffixIcon: TextButton(child: Text('change',style: TextStyle(color: Colors.blueAccent)),onPressed: (){Navigator.pushNamed(context,RoutesNames.changePassword);} ,),
                       ),
                       MainTextField(
                         controller: TextEditingController(text: user.phone),

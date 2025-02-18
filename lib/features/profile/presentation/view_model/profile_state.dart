@@ -26,3 +26,16 @@ class EditProfileError extends EditProfileState {
   final String message;
   EditProfileError(this.message);
 }
+
+
+sealed class ChangePasswordState{}
+class ChangePasswordLoading extends ChangePasswordState {}
+class ChangePasswordSuccess extends ChangePasswordState {
+  final String message;
+  ChangePasswordSuccess(this.message);
+}
+class ChangePasswordError extends ChangePasswordState {
+  final String message;
+  ChangePasswordError(this.message);
+}
+

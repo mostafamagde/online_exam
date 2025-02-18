@@ -24,7 +24,7 @@ abstract class ProfileApi {
   );
 
   @PATCH('/changePassword')
-  Future<void> changePassword(@Header("token") String token,
+  Future<HttpResponse<dynamic>> changePassword(@Header("token") String token,
       @Body() ChangePasswordRequest password,
       );
 }
