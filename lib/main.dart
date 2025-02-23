@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
-
+import 'package:online_exam/core/api_manager/api_manager.dart';
+import 'package:online_exam/features/explore/data/models/exam_data.dart';
+import 'package:retrofit/retrofit.dart';
+import 'package:dio/dio.dart';
 import 'core/di/di.dart';
 import 'core/routes_manager/route_generator.dart';
 
-void main() {
+void main() async {
   configureDependencies();
+  final dio = Dio();
+  dio.options.headers = {
+    'token':
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjcyOGYwODZhMDI0ZjA2ZWEyODZkYiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQwMDU2OTExfQ.A34jo1EITjVyAP272-yj9_SV0kOWm1YO3NeGtRfgwMQ",
+  };
+  final client = RestClient(dio);
+  await client.getExams().then((it) => print(it));
   runApp(const MyApp());
 }
 
@@ -16,6 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -38,4 +49,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
