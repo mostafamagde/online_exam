@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/navigation_cubit/navigation_cubit.dart';
 import '../../../core/routes_manager/route_generator.dart';
-import '../../explore/presentation/explore_view.dart';
+
+import '../../explore_subjects/presentation/explore_view.dart';
 import '../../result/presentation/result_view.dart';
 
 class LayoutView extends StatelessWidget {
