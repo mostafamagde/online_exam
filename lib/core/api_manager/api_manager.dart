@@ -10,7 +10,7 @@ import '../../features/exam_feature/data/models/exams_response.dart';
 import '../../features/explore_subjects/data/models/subject_response.dart';
 
 part 'api_manager.g.dart';
-@injectable
+
 @RestApi(baseUrl: 'https://exam.elevateegy.com/api/v1/')
 abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;

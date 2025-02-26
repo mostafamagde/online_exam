@@ -11,7 +11,9 @@ abstract class DioInjection {
     var dio = Dio(
       BaseOptions(
         connectTimeout: Duration(seconds: 60),
-        baseUrl: "https://ecommerce.routemisr.com/",
+        headers: {
+          "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjcyOGYwODZhMDI0ZjA2ZWEyODZkYiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQwMDU2OTExfQ.A34jo1EITjVyAP272-yj9_SV0kOWm1YO3NeGtRfgwMQ"
+        }
       ),
     );
 

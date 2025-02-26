@@ -7,7 +7,7 @@ import '../../../core/navigation_cubit/navigation_cubit.dart';
 
 import '../../explore_subjects/domain/use_cases/get_subjects_usecase.dart';
 import '../../explore_subjects/presentation/cubits/explore_cubit.dart';
-import '../../explore_subjects/presentation/explore_view.dart';
+import '../../explore_subjects/presentation/views/explore_view.dart';
 import '../../result/presentation/result_view.dart';
 
 class LayoutView extends StatelessWidget {

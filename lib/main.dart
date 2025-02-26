@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/core/app_theme/app_theme.dart';
 
 import 'core/di/di.dart';
 import 'core/routes_manager/route_generator.dart';
 
-void main() async {
+void main()  {
   configureDependencies();
 
   runApp(const MyApp());
@@ -13,13 +14,13 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
+      theme: AppTheme.lightTheme,
       onGenerateRoute: RouteGenerator.generateRoutes,
     );
   }
