@@ -3,7 +3,7 @@ import 'package:online_exam/features/explore_subjects/data/models/subject_model.
 
 
 import '../../../../core/models/pagination_data.dart';
-import '../../domain/entities/subject_entity.dart';
+
 
 part 'subject_response.g.dart';
 

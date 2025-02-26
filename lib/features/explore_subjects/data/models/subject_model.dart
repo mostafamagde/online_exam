@@ -1,11 +1,12 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/entities/subject_entity.dart';
+
 
 part 'subject_model.g.dart';
 
 @JsonSerializable()
-class SubjectModel {
+class SubjectModel extends Equatable {
   @JsonKey(name: "_id")
   final String id;
   final String name;
@@ -21,8 +22,9 @@ class SubjectModel {
 
   factory SubjectModel.fromJson(Map<String, dynamic> json) => _$SubjectModelFromJson(json);
   Map<String, dynamic> toJson() => _$SubjectModelToJson(this);
-  SubjectEntity toEntity() {
-    return SubjectEntity(name: name, id: id, icon: icon);
-  }
+
+  @override
+  List<Object?> get props => [id, name, icon, createdAt];
+
 
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam/features/explore_subjects/data/models/subject_model.dart';
 
+import '../../../core/di/di.dart';
 import '../../../core/navigation_cubit/navigation_cubit.dart';
-import '../../../core/routes_manager/route_generator.dart';
 
+import '../../explore_subjects/domain/use_cases/get_subjects_usecase.dart';
+import '../../explore_subjects/presentation/cubits/explore_cubit.dart';
 import '../../explore_subjects/presentation/explore_view.dart';
 import '../../result/presentation/result_view.dart';
 
@@ -18,12 +21,17 @@ class LayoutView extends StatelessWidget {
       builder: (context, state) {
         final NavigationCubit cubit = NavigationCubit.get(context);
         final List<Widget> screens = [
-          ExploreView(),
-          ResultView()
-
+          BlocProvider(
+            create:
+                (context) =>
+                    ExploreCubit(getIt<GetSubjectsUseCase>())
+                      ..doIntent(LoadSubjectsIntent()),
+            child: ExploreView(),
+          ),
+          ResultView(),
         ];
         return Scaffold(
-          bottomNavigationBar:BottomNavigationBar(
+          bottomNavigationBar: BottomNavigationBar(
             elevation: 0,
 
             currentIndex: state.index,
@@ -41,9 +49,7 @@ class LayoutView extends StatelessWidget {
                 icon: Icon(Icons.person),
                 label: "Profile",
               ),
-
             ],
-
           ),
           body: screens[state.index],
         );
