@@ -10,8 +10,10 @@ class ExamView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(arguments.name),
-       leading: Icon(Icons.arrow_back_ios),
-
+        leading: GestureDetector(
+          onTap: Navigator.of(context).pop,
+          child: Icon(Icons.arrow_back_ios),
+        ),
       ),
     );
   }
