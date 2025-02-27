@@ -4,13 +4,13 @@ import 'package:online_exam/core/models/result.dart';
 import 'package:online_exam/features/explore_subjects/data/models/subject_model.dart';
 
 import '../../../../core/api_manager/api_manager.dart';
-import '../remote_data_source_repo/remote_data_source_repo.dart';
+import '../get_subject_remote_data_source_repo/get_subject_remote_data_source_repo.dart';
 
-@Injectable(as: DataSourceRepo)
-class DataSourceImpl implements DataSourceRepo {
+@Injectable(as: GetSubjectsDataSourceRepo)
+class GetSubjectsDataSourceImpl implements GetSubjectsDataSourceRepo {
   final RestClient _restClient;
 
-  DataSourceImpl(this._restClient);
+  GetSubjectsDataSourceImpl(this._restClient);
 
   @override
   Future<Result<List<SubjectModel>>> getSubjects() async {

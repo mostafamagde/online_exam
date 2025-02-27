@@ -16,7 +16,7 @@ class ExamData extends Equatable {
   final bool active;
   final DateTime createdAt;
 
-   ExamData({
+   const ExamData({
 
     required this.id,
     required this.title,

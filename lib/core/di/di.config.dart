@@ -15,12 +15,12 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import '../../features/explore_subjects/data/explore_repo_impl/explore_repo_impl.dart'
     as _i444;
+import '../../features/explore_subjects/data/get_subject_remote_data_source_repo/get_subject_remote_data_source_repo.dart'
+    as _i794;
+import '../../features/explore_subjects/data/get_subject_remote_data_source_repo_impl/get_subject_remote_data_source_repo_impl.dart'
+    as _i151;
 import '../../features/explore_subjects/data/models/subject_model.dart'
     as _i868;
-import '../../features/explore_subjects/data/remote_data_source_impl/remote_data_source_impl.dart'
-    as _i323;
-import '../../features/explore_subjects/data/remote_data_source_repo/remote_data_source_repo.dart'
-    as _i986;
 import '../../features/explore_subjects/domain/explore_repo/explore_repo.dart'
     as _i729;
 import '../../features/explore_subjects/domain/use_cases/get_subjects_usecase.dart'
@@ -49,11 +49,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i266.RestClient>(
       () => dioInjection.injectRestClient(gh<_i361.Dio>()),
     );
-    gh.factory<_i986.DataSourceRepo>(
-      () => _i323.DataSourceImpl(gh<_i266.RestClient>()),
+    gh.factory<_i794.GetSubjectsDataSourceRepo>(
+      () => _i151.GetSubjectsDataSourceImpl(gh<_i266.RestClient>()),
     );
     gh.factory<_i729.ExploreRepo>(
-      () => _i444.ExploreRepoImpl(gh<_i986.DataSourceRepo>()),
+      () => _i444.ExploreRepoImpl(gh<_i794.GetSubjectsDataSourceRepo>()),
     );
     gh.factory<_i156.GetSubjectsUseCase>(
       () => _i156.GetSubjectsUseCase(gh<_i729.ExploreRepo>()),
