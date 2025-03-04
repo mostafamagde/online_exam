@@ -93,9 +93,13 @@ Widget _successWidget(
               onTap:
                   () => cubit.doIntent(
                     ExamClicked(
-                      examId: exams[index].id,
                       context: context,
-                      subjectName: subjectName,
+                      args: [
+                        exams[index].id,
+                        subjectName,
+                        exams[index].numberOfQuestions.toString(),
+                        icon,
+                      ],
                     ),
                   ),
               child: Container(

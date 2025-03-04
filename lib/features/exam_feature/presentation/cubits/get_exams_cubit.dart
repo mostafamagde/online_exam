@@ -20,12 +20,12 @@ class GetExamsCubit extends Cubit<GetExamsState> {
       case LoadExamsIntent():
         _loadExams(intent.subjectId);
       case ExamClicked():
-        _examClicked(intent.context, intent.examId,intent.subjectName);
+        _examClicked(intent.context,intent.args);
 
     }
   }
-void _examClicked(BuildContext context, String examId, String subjectName) {
-    Navigator.pushNamed(context, RoutesNames.examDetails,arguments: [examId,subjectName]);
+void _examClicked(BuildContext context, [List<String>? args]) {
+    Navigator.pushNamed(context, RoutesNames.examDetails,arguments: args);
   }
   Future<void> _loadExams(String subjectId) async {
     emit(state.copyWith(state: States.loading));
@@ -51,9 +51,6 @@ class LoadExamsIntent extends GetExamsIntent {
 
 class ExamClicked extends GetExamsIntent {
   BuildContext context;
-  String examId;
-  String subjectName;
-
-
-  ExamClicked({required this.examId, required this.context,required this.subjectName});
+ List<String>? args;
+  ExamClicked({ required this.context, this.args});
 }
