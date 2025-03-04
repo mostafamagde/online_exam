@@ -19,15 +19,17 @@ class ExploreCubit extends Cubit<ExploreState> {
   ExploreCubit(this._getSubjectsUseCase)
     : super(ExploreState(status: States.loading));
 
-  static ExploreCubit get (context) => BlocProvider.of(context);
-  Future<void> doIntent(ExploreIntent intent) async {
+  static ExploreCubit get(context) => BlocProvider.of(context);
+
+  void doIntent(ExploreIntent intent)  {
     switch (intent) {
       case LoadSubjectsIntent():
         _loadSubjects();
       case SubjectClickedIntent():
-        _subjectClicked(intent.context, intent.subject, args: intent.args);
+        _subjectClicked(intent.context, intent.subject);
     }
   }
+
   Future<void> _loadSubjects() async {
     emit(state.copyWith(state: States.loading));
     var result = await _getSubjectsUseCase.call();
@@ -40,17 +42,20 @@ class ExploreCubit extends Cubit<ExploreState> {
         );
     }
   }
-  void _subjectClicked(BuildContext context, SubjectModel subject,{Object ? args})  {
 
-    Navigator.pushNamed(context, RoutesNames.examsBySubject,arguments: args);
+  void _subjectClicked(BuildContext context, SubjectModel subject) {
+    Navigator.pushNamed(
+      context,
+      RoutesNames.examsBySubject,
+      arguments: subject,
+    );
   }
-
 }
 
 sealed class ExploreIntent {}
 
 class LoadSubjectsIntent extends ExploreIntent {
-   List<SubjectModel>? subject;
+  List<SubjectModel>? subject;
 
   LoadSubjectsIntent({this.subject});
 }
@@ -58,7 +63,6 @@ class LoadSubjectsIntent extends ExploreIntent {
 class SubjectClickedIntent extends ExploreIntent {
   BuildContext context;
   SubjectModel subject;
-  Object? args;
-  SubjectClickedIntent({required this.context, required this.subject, this.args});
 
+  SubjectClickedIntent({required this.context, required this.subject});
 }

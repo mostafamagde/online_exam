@@ -16,7 +16,7 @@ ExploreState copyWith ({ Exception? exception, List<SubjectModel>? subjects, Sta
   return ExploreState(
     exception: exception ?? this.exception,
     subjects: subjects ?? this.subjects,
-    status: state ?? this.status,
+    status: state ?? status,
   );
 }
 

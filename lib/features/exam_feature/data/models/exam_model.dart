@@ -1,11 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../../core/models/pagination_data.dart';
-part 'exam_data.g.dart';
+part 'exam_model.g.dart';
 
 @JsonSerializable()
-class ExamData extends Equatable {
+class ExamModel extends Equatable {
 
   @JsonKey(name: '_id')
   final String id;
@@ -16,7 +15,7 @@ class ExamData extends Equatable {
   final bool active;
   final DateTime createdAt;
 
-   const ExamData({
+   const ExamModel({
 
     required this.id,
     required this.title,
@@ -26,8 +25,8 @@ class ExamData extends Equatable {
     required this.active,
     required this.createdAt,
   });
-  factory ExamData.fromJson(Map<String, dynamic> json) => _$ExamDataFromJson(json);
-  Map<String, dynamic> toJson() => _$ExamDataToJson(this);
+  factory ExamModel.fromJson(Map<String, dynamic> json) => _$ExamModelFromJson(json);
+  Map<String, dynamic> toJson() => _$ExamModelToJson(this);
 
 
 

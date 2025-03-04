@@ -7,11 +7,11 @@ import '../explore_repo/explore_repo.dart';
 
 @injectable
 class GetSubjectsUseCase {
-  final ExploreRepo subjectsRepository;
+  final ExploreRepo _subjectsRepository;
 
-  GetSubjectsUseCase(this.subjectsRepository);
+  GetSubjectsUseCase(this._subjectsRepository);
 
   Future<Result<List<SubjectModel>>> call() async {
-    return await subjectsRepository.getSubjects();
+    return await _subjectsRepository.getSubjects();
   }
 }

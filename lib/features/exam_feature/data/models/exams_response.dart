@@ -2,20 +2,20 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../../core/models/pagination_data.dart';
-import '../../../exam_feature/data/models/exam_data.dart';
+import '../../../exam_feature/data/models/exam_model.dart';
 
 part 'exams_response.g.dart';
 
 @JsonSerializable()
 class ExamsResponse extends Equatable {
-  final List<ExamData> subjects;
+   List<ExamModel> exams;
   @JsonKey(name: 'metadata')
   final PaginationData pagination;
 
-  const ExamsResponse({required this.subjects, required this.pagination});
+   ExamsResponse({required this.exams, required this.pagination});
 
   @override
-  List<Object?> get props => [subjects, pagination];
+  List<Object?> get props => [exams, pagination];
 
   factory ExamsResponse.fromJson(Map<String, dynamic> json) =>
       _$ExamsResponseFromJson(json);

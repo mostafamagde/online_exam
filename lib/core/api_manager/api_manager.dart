@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:online_exam/features/exam_feature/data/models/exam_data.dart';
+import 'package:online_exam/features/exam_feature/data/models/exam_model.dart';
 
 import 'package:retrofit/retrofit.dart';
 
@@ -16,8 +16,8 @@ abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
 
   @GET('/exams')
-  Future<ExamsResponse> getExams();
+  Future<ExamsResponse> getExams(@Query("subject") String subjectId);
+
   @GET('/subjects')
   Future<SubjectResponse> getSubjects();
-
 }

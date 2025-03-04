@@ -25,7 +25,7 @@ class ExploreView extends StatelessWidget {
               child: CircularProgressIndicator(color: Constants.primaryColor),
             );
           case States.success:
-            return successWidget(state.subjects!, theme);
+            return successWidget(state.subjects!, theme,context);
           case States.failure:
             return Center(
               child: Column(
@@ -33,8 +33,11 @@ class ExploreView extends StatelessWidget {
 
                 children: [
                   Icon(Icons.error, color: Colors.red, size: 50),
-                  SizedBox(height:20),
-                  Text(handleErrorMessage(state.exception, context),style: theme.textTheme.titleLarge,),
+                  SizedBox(height: 20),
+                  Text(
+                    handleErrorMessage(state.exception, context),
+                    style: theme.textTheme.titleLarge,
+                  ),
                 ],
               ),
             );
@@ -44,7 +47,12 @@ class ExploreView extends StatelessWidget {
   }
 }
 
-Widget successWidget(List<SubjectModel> subjects, ThemeData theme) {
+Widget successWidget(
+  List<SubjectModel> subjects,
+  ThemeData theme,
+  BuildContext context,
+) {
+  var cubit = ExploreCubit.get(context);
   return Padding(
     padding: EdgeInsets.only(top: 56, left: 16, right: 16),
     child: Column(
@@ -68,11 +76,13 @@ Widget successWidget(List<SubjectModel> subjects, ThemeData theme) {
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: InkWell(
                   onTap:
-                      () => Navigator.pushNamed(
-                        context,
-                        RoutesNames.examsBySubject,
-                        arguments: subjects[index],
+                      () => cubit.doIntent(
+                        SubjectClickedIntent(
+                          subject: subjects[index],
+                          context: context,
+                        ),
                       ),
+
                   child: SubjectContainer(subjects: subjects[index]),
                 ),
               );
