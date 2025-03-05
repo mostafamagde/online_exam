@@ -6,6 +6,7 @@ import 'package:online_exam/features/profile/presentation/view_model/edit_profil
 import '../../../../../core/widgets/main_button.dart';
 import '../../../../../core/widgets/main_text_field.dart';
 import '../../../data/models/user_model.dart';
+import '../../view_model/edit_profile_state.dart';
 import '../../view_model/profile_cubit.dart';
 import '../../view_model/profile_state.dart';
 

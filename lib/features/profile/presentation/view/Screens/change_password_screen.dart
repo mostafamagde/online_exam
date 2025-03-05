@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/features/profile/data/models/change_password_request.dart';
 import 'package:online_exam/features/profile/presentation/view_model/change_password_cubit.dart';
-import 'package:online_exam/features/profile/presentation/view_model/profile_state.dart';
 
 import '../../../../../core/app_consts/app_validators.dart';
 import '../../../../../core/widgets/main_button.dart';
 import '../../../../../core/widgets/main_text_field.dart';
+import '../../view_model/change_password_state.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});

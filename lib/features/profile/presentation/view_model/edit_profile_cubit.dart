@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/features/profile/data/models/user_model.dart';
 import 'package:online_exam/features/profile/domain/repository/profile_repository.dart';
-import 'package:online_exam/features/profile/presentation/view_model/profile_state.dart';
+
+import 'edit_profile_state.dart';
 
 @injectable
 class EditProfileCubit extends Cubit<EditProfileState>{
