@@ -4,6 +4,8 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam/features/profile/data/models/change_password_request.dart';
 
 import '../../domain/repository/profile_repository.dart';
+import '../../presentation/view_model/change_password_state.dart';
+import '../../presentation/view_model/edit_profile_state.dart';
 import '../../presentation/view_model/profile_state.dart';
 import '../models/user_model.dart';
 import '../remote_datasource/profile_api.dart';
