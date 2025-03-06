@@ -2,7 +2,7 @@ part of 'explore_cubit.dart';
 
 enum States { loading, success, failure }
 
-@injectable
+
 class ExploreState extends Equatable {
   List<SubjectModel>? subjects;
   States status;

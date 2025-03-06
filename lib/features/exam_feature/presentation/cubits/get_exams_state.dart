@@ -4,7 +4,7 @@ import 'package:online_exam/features/exam_feature/data/models/exam_model.dart';
 
 enum States { loading, success, failure }
 
-@injectable
+
 class GetExamsState extends Equatable {
   List<ExamModel>? exams;
   States status;
