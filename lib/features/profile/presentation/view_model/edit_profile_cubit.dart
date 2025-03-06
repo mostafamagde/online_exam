@@ -11,12 +11,12 @@ class EditProfileCubit extends Cubit<EditProfileState>{
   final ProfileRepository repository;
   EditProfileCubit(this.repository) :super(EditProfileLoading());
 
-  Future<void> editProfile(String token,UserModel user)async{
+  Future<void> editProfile(UserModel user)async{
     emit(EditProfileLoading());
-    final result = await repository.editProfile(token, user);
+    final result = await repository.editProfile( user);
 
     if(result is EditProfileSuccess){
-      emit(EditProfileSuccess(result.user));
+      emit(EditProfileSuccess( result.user));
     }else if (result is EditProfileError){
       emit(EditProfileError(result.message));
     }

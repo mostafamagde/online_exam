@@ -3,23 +3,24 @@ import 'dart:developer';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/features/profile/data/models/change_password_request.dart';
 
+import '../../../../core/api_manager/api_manager.dart';
 import '../../domain/repository/profile_repository.dart';
 import '../../presentation/view_model/change_password_state.dart';
 import '../../presentation/view_model/edit_profile_state.dart';
 import '../../presentation/view_model/profile_state.dart';
 import '../models/user_model.dart';
-import '../remote_datasource/profile_api.dart';
+
 
 @Injectable(as:ProfileRepository)
 class ProfileRepositoryImpl implements ProfileRepository {
-  final ProfileApi api;
+  final RestClient api;
 
   ProfileRepositoryImpl(this.api);
 
   @override
-  Future<ProfileState> getProfile(String token) async {
+  Future<ProfileState> getProfile() async {
     try {
-      final response = await api.getProfile(token);
+      final response = await api.getProfile();
       return ProfileSuccess(response.user);
 
     } catch (e) {
@@ -29,18 +30,19 @@ class ProfileRepositoryImpl implements ProfileRepository {
   }
 
   @override
-  Future<EditProfileState> editProfile(String token, UserModel user) async {
+  Future<EditProfileState> editProfile(  UserModel user) async {
     try {
-      final response = await api.editProfile(token, user);
-      return EditProfileSuccess(response.user);
+      final response = await api.editProfile( user);
+      return EditProfileSuccess( response.user);
     } catch (e) {
       return EditProfileError("Failed to update profile");
     }
   }
 
-  Future<ChangePasswordState> changePassword(ChangePasswordRequest password, String token) async {
+  @override
+  Future<ChangePasswordState> changePassword(ChangePasswordRequest password) async {
     try {
-      final response = await api.changePassword(token, password);
+      final response = await api.changePassword( password);
 
       if (response.response.statusCode == 200) {
         return ChangePasswordSuccess("Password Changed Successfully");

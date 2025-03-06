@@ -22,7 +22,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final TextEditingController newPasswordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
-  String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZWVmODZhMDI0ZjA2ZWEyN2Q0NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM5ODQ5NjYyfQ.JWluZEm-y7VTllOUZTJDseXwam2jlGLdhaOi0bTv-9Y";
+
   void _resetPassword() {
     if (_formKey.currentState!.validate()) {
       final request = ChangePasswordRequest(
@@ -31,7 +31,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         rePassword: confirmPasswordController.text,
       );
 
-      context.read<ChangePasswordCubit>().changePassword(token, request);
+      context.read<ChangePasswordCubit>().changePassword( request);
     }
   }
 

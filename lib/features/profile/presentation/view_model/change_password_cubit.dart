@@ -12,9 +12,9 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState>{
   final ProfileRepository repository;
   ChangePasswordCubit(this.repository) :super(ChangePasswordLoading());
 
-  Future<void> changePassword(String token,ChangePasswordRequest request)async{
+  Future<void> changePassword(ChangePasswordRequest request)async{
     emit(ChangePasswordLoading());
-    final result = await repository.changePassword(request, token);
+    final result = await repository.changePassword(request);
 
     if(result is ChangePasswordSuccess){
       emit(ChangePasswordSuccess(result.message));

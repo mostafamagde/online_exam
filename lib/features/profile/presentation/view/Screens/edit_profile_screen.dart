@@ -20,7 +20,6 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZWVmODZhMDI0ZjA2ZWEyN2Q0NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM5ODQ5NjYyfQ.JWluZEm-y7VTllOUZTJDseXwam2jlGLdhaOi0bTv-9Y";
 
 
   final _formKey = GlobalKey<FormState>(); // Key for form validation
@@ -36,8 +35,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   void initState() {
     super.initState();
-    final state = context.read<ProfileCubit>().state;
-    if (state is ProfileSuccess) {
+    final state = context.read<EditProfileCubit>().state;
+    if (state is EditProfileSuccess) {
        user = state.user;
       usernameController = TextEditingController(text: user.username);
       firstNameController = TextEditingController(text: user.firstName);
@@ -60,7 +59,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             case EditProfileSuccess():
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Profile updated successfully!")));
             Navigator.pop(context);
-            context.read<ProfileCubit>().getProfile(token);
+            context.read<ProfileCubit>().getProfile();
             case EditProfileError():
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.message)),
@@ -133,7 +132,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                             );
 
-                            context.read<EditProfileCubit>().editProfile(token, updatedUser);
+                            context.read<EditProfileCubit>().editProfile( updatedUser);
                           }
                         },
                       );

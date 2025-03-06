@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/features/profile/presentation/view/Screens/profile_screen.dart';
+import 'package:online_exam/features/explore_subjects/data/models/subject_model.dart';
 
+import '../../../core/di/di.dart';
 import '../../../core/navigation_cubit/navigation_cubit.dart';
-import '../../../core/routes_manager/route_generator.dart';
-import '../../explore/presentation/explore_view.dart';
+
+import '../../explore_subjects/domain/use_cases/get_subjects_usecase.dart';
+import '../../explore_subjects/presentation/cubits/explore_cubit.dart';
+import '../../explore_subjects/presentation/views/explore_view.dart';
+import '../../profile/domain/repository/profile_repository.dart';
+import '../../profile/presentation/view_model/profile_cubit.dart';
 import '../../result/presentation/result_view.dart';
 
 class LayoutView extends StatelessWidget {
@@ -18,13 +24,21 @@ class LayoutView extends StatelessWidget {
       builder: (context, state) {
         final NavigationCubit cubit = NavigationCubit.get(context);
         final List<Widget> screens = [
-
-          ExploreView(),
+          BlocProvider(
+            create:
+                (context) =>
+            ExploreCubit(getIt<GetSubjectsUseCase>())
+              ..doIntent(LoadSubjectsIntent()),
+            child: ExploreView(),
+          ),
           ResultView(),
-          ProfileScreen(),
+          BlocProvider(
+            create: (context) => ProfileCubit(getIt<ProfileRepository>()),
+            child: ProfileScreen(),
+          )
         ];
         return Scaffold(
-          bottomNavigationBar:BottomNavigationBar(
+          bottomNavigationBar: BottomNavigationBar(
             elevation: 0,
 
             currentIndex: state.index,

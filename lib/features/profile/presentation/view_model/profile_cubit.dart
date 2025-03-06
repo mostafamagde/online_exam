@@ -9,9 +9,9 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   ProfileCubit(this.repository) : super(ProfileLoading());
 
-  Future<void> getProfile(String token) async {
+  Future<void> getProfile() async {
     emit(ProfileLoading());
-    final result = await repository.getProfile(token);
+    final result = await repository.getProfile();
 
     if (result is ProfileSuccess) {
       emit(ProfileSuccess(result.user));
