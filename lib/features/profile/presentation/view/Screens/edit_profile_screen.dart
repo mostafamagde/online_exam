@@ -11,8 +11,8 @@ import '../../view_model/profile_cubit.dart';
 import '../../view_model/profile_state.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  EditProfileScreen({super.key});
-
+  EditProfileScreen({super.key,required this.user});
+  final UserModel user;
   static const String routeName = 'profile_edit_screen.dart';
 
   @override
@@ -21,9 +21,9 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
 
-
+  String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZWVmODZhMDI0ZjA2ZWEyN2Q0NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM5ODQ5NjYyfQ.JWluZEm-y7VTllOUZTJDseXwam2jlGLdhaOi0bTv-9Y";
   final _formKey = GlobalKey<FormState>(); // Key for form validation
-
+  _EditProfileScreenState();
   TextEditingController usernameController = TextEditingController();
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -31,20 +31,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
-  late UserModel user;
+
   @override
   void initState() {
     super.initState();
-    final state = context.read<EditProfileCubit>().state;
-    if (state is EditProfileSuccess) {
-       user = state.user;
-      usernameController = TextEditingController(text: user.username);
-      firstNameController = TextEditingController(text: user.firstName);
-      lastNameController = TextEditingController(text: user.lastName);
-      emailController = TextEditingController(text: user.email);
-      phoneController = TextEditingController(text: user.phone);
-    }
+
+    UserModel user = widget.user;
+    usernameController = TextEditingController(text: user.username);
+    firstNameController = TextEditingController(text: user.firstName);
+    lastNameController = TextEditingController(text: user.lastName);
+    emailController = TextEditingController(text: user.email);
+    phoneController = TextEditingController(text: user.phone);
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +52,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       body: BlocListener<EditProfileCubit, EditProfileState>(
         listener: (context, state) {
           switch(state){
-            
+
             case EditProfileLoading():
               CircularProgressIndicator();
             case EditProfileSuccess():
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Profile updated successfully!")));
-            Navigator.pop(context);
-            context.read<ProfileCubit>().getProfile();
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Profile updated successfully!")));
+              Navigator.pop(context);
+              context.read<ProfileCubit>().getProfile();
             case EditProfileError():
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.message)),
@@ -124,15 +123,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
                             final updatedUser = UserModel(
 
-                            username: usernameController.text,
-                            firstName: firstNameController.text,
-                            lastName: lastNameController.text,
-                            email: emailController.text,
-                            phone: phoneController.text,
+                              username: usernameController.text,
+                              firstName: firstNameController.text,
+                              lastName: lastNameController.text,
+                              email: emailController.text,
+                              phone: phoneController.text,
 
                             );
 
-                            context.read<EditProfileCubit>().editProfile( updatedUser);
+                            context.read<EditProfileCubit>().editProfile(updatedUser);
+                            Navigator.pop(context, true);
                           }
                         },
                       );

@@ -1,0 +1,50 @@
+[33mb568426[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mprofile[m[33m, [m[1;31morigin/profile[m[33m)[m HEAD@{0}: reset: moving to b568426a618a26ccf9df1c2fd59ff0e9e14df257
+[33mb568426[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mprofile[m[33m, [m[1;31morigin/profile[m[33m)[m HEAD@{1}: merge origin/profile: Fast-forward
+[33mb1af61d[m HEAD@{2}: reset: moving to HEAD~1
+[33mb568426[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mprofile[m[33m, [m[1;31morigin/profile[m[33m)[m HEAD@{3}: merge origin/profile: Fast-forward
+[33m981f3eb[m HEAD@{4}: reset: moving to HEAD~1
+[33mb1af61d[m HEAD@{5}: reset: moving to b1af61d5b93f096d2e83566c7f82a75b9e23b41c
+[33m8f06df1[m HEAD@{6}: reset: moving to 8f06df1a4f4e25fbdc40d83b5b4a17da9a2036ca
+[33mb1af61d[m HEAD@{7}: reset: moving to b1af61d5b93f096d2e83566c7f82a75b9e23b41c
+[33m8f06df1[m HEAD@{8}: reset: moving to 8f06df1a4f4e25fbdc40d83b5b4a17da9a2036ca
+[33mb1af61d[m HEAD@{9}: reset: moving to b1af61d5b93f096d2e83566c7f82a75b9e23b41c
+[33mb568426[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mprofile[m[33m, [m[1;31morigin/profile[m[33m)[m HEAD@{10}: reset: moving to HEAD
+[33mb568426[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mprofile[m[33m, [m[1;31morigin/profile[m[33m)[m HEAD@{11}: merge origin/profile: Merge made by the 'ort' strategy.
+[33mb1af61d[m HEAD@{12}: commit (amend): Resolve issues
+[33me102a6c[m HEAD@{13}: commit (amend): Resolve issues
+[33m888044c[m HEAD@{14}: commit (amend): Resolve issues
+[33m8f06df1[m HEAD@{15}: merge origin/profile: Fast-forward
+[33m981f3eb[m HEAD@{16}: rebase (finish): returning to refs/heads/profile
+[33m981f3eb[m HEAD@{17}: rebase (start): checkout 981f3eb9af53333eefddeaa27b09a21aad1e197e
+[33m482e5cf[m HEAD@{18}: rebase (finish): returning to refs/heads/profile
+[33m482e5cf[m HEAD@{19}: rebase (start): checkout 482e5cf50bebd6d7fc74eb1cb3bf3212eb6593a3
+[33mdd3b678[m HEAD@{20}: rebase (finish): returning to refs/heads/profile
+[33mdd3b678[m HEAD@{21}: rebase (start): checkout dd3b678bd3c9c2a3e24b0bb41862377dae4ba031
+[33mc2b691b[m HEAD@{22}: revert: Revert "Reapply "Resolve issues""
+[33mdd3b678[m HEAD@{23}: revert: Reapply "Resolve issues"
+[33m482e5cf[m HEAD@{24}: revert: Revert "Resolve issues"
+[33m8f06df1[m HEAD@{25}: rebase (finish): returning to refs/heads/profile
+[33m8f06df1[m HEAD@{26}: rebase (pick): Resolve issues
+[33m981f3eb[m HEAD@{27}: rebase (start): checkout 981f3eb9af53333eefddeaa27b09a21aad1e197e
+[33m2533226[m HEAD@{28}: commit: Resolve issues
+[33m47ad73b[m HEAD@{29}: commit: Resolve issues
+[33m981f3eb[m HEAD@{30}: checkout: moving from profile to profile
+[33m981f3eb[m HEAD@{31}: branch: Reset to origin/profile
+[33m981f3eb[m HEAD@{32}: checkout: moving from exam-feature to profile
+[33mc60f7bc[m[33m ([m[1;31morigin/exam-feature[m[33m, [m[1;32mexam-feature[m[33m)[m HEAD@{33}: checkout: moving from profile to exam-feature
+[33m981f3eb[m HEAD@{34}: commit: Change password finish
+[33mb5f79f4[m HEAD@{35}: commit: Finish Get and Update Profile
+[33m9b4f30c[m[33m ([m[1;32mdev[m[33m)[m HEAD@{36}: checkout: moving from Profile to profile
+[33mebd84dd[m HEAD@{37}: checkout: moving from Profile to Profile
+[33mebd84dd[m HEAD@{38}: branch: Reset to origin/Profile
+[33mebd84dd[m HEAD@{39}: checkout: moving from dev to Profile
+[33m9b4f30c[m[33m ([m[1;32mdev[m[33m)[m HEAD@{40}: checkout: moving from Profile to dev
+[33mebd84dd[m HEAD@{41}: checkout: moving from dev to Profile
+[33m9b4f30c[m[33m ([m[1;32mdev[m[33m)[m HEAD@{42}: checkout: moving from dev to dev
+[33m9b4f30c[m[33m ([m[1;32mdev[m[33m)[m HEAD@{43}: branch: Reset to origin/dev
+[33m9b4f30c[m[33m ([m[1;32mdev[m[33m)[m HEAD@{44}: commit: added di layer
+[33m385f0fa[m HEAD@{45}: merge origin/dev: Fast-forward
+[33mebd84dd[m HEAD@{46}: checkout: moving from Profile to dev
+[33mebd84dd[m HEAD@{47}: checkout: moving from master to Profile
+[33m58e7c78[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{48}: merge origin/master: Fast-forward
+[33mba511e0[m HEAD@{49}: clone: from https://github.com/mostafamagde/online_exam_fri_g4.git
