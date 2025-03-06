@@ -134,6 +134,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               }
             case ProfileError(message: final message):
+              print("meeeeeeeeeeeeeeeee$message");
               return Center(
                 child: Text(message, style: const TextStyle(color: Colors.red)),
               );

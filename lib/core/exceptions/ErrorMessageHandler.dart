@@ -15,6 +15,8 @@ String handleErrorMessage(Exception? ex,BuildContext context){
     case NetworkError():{
       message = "NetworkError";//.tr();
     }
+
+
     default:{
       message = "GeneralErrorMessage";//.tr();
 
