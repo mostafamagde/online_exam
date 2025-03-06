@@ -8,6 +8,9 @@ import 'package:retrofit/retrofit.dart';
 import '../../features/exam_feature/data/models/exams_response.dart';
 
 import '../../features/explore_subjects/data/models/subject_response.dart';
+import '../../features/profile/data/models/change_password_request.dart';
+import '../../features/profile/data/models/profile_response_model.dart';
+import '../../features/profile/data/models/user_model.dart';
 
 part 'api_manager.g.dart';
 
@@ -20,4 +23,20 @@ abstract class RestClient {
 
   @GET('/subjects')
   Future<SubjectResponse> getSubjects();
+
+  @GET("/auth/profileData")
+  Future<ProfileResponseModel> getProfile();
+
+  // PUT request to update profile
+  @PUT("/auth/editProfile")
+  Future<ProfileResponseModel> editProfile(
+
+    @Body() UserModel user,
+  );
+
+  @PATCH('/auth/changePassword')
+  Future<HttpResponse<dynamic>> changePassword(
+
+    @Body() ChangePasswordRequest password,
+  );
 }

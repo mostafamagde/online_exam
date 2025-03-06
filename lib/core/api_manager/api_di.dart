@@ -12,7 +12,7 @@ abstract class DioInjection {
       BaseOptions(
         connectTimeout: Duration(seconds: 60),
         headers: {
-          "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjcyOGYwODZhMDI0ZjA2ZWEyODZkYiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQwMDU2OTExfQ.A34jo1EITjVyAP272-yj9_SV0kOWm1YO3NeGtRfgwMQ"
+          "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YzlkOTc0NTU1NGIzMjg5MTI2MTYzMyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQxMjgxNjUyfQ.hrGFZnbqlbOE-P1r1griRTKVrFfz3qdeRdhOAQyLITo"
         }
       ),
     );
