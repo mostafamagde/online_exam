@@ -10,7 +10,7 @@ import '../../domain/use_cases/get_subjects_usecase.dart';
 
 part 'explore_state.dart';
 
-@injectable
+
 class ExploreCubit extends Cubit<ExploreState> {
   final GetSubjectsUseCase _getSubjectsUseCase;
 
