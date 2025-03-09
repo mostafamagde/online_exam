@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/features/profile/data/models/change_password_request.dart';
 import 'package:online_exam/features/profile/presentation/view_model/change_password_cubit.dart';
+import 'package:online_exam/features/profile/presentation/view_model/profile_state.dart';
 
 import '../../../../../core/app_consts/app_validators.dart';
 import '../../../../../core/widgets/main_button.dart';
@@ -22,7 +23,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final TextEditingController newPasswordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
-
+  String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZWVmODZhMDI0ZjA2ZWEyN2Q0NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM5ODQ5NjYyfQ.JWluZEm-y7VTllOUZTJDseXwam2jlGLdhaOi0bTv-9Y";
   void _resetPassword() {
     if (_formKey.currentState!.validate()) {
       final request = ChangePasswordRequest(
@@ -31,7 +32,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         rePassword: confirmPasswordController.text,
       );
 
-      context.read<ChangePasswordCubit>().changePassword( request);
+      context.read<ChangePasswordCubit>().changePassword(request);
     }
   }
 
@@ -93,7 +94,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     isObscured: true,
                     controller: confirmPasswordController,
                     validator: (val) {
-    AppValidators.validatePassword(val);
+                      AppValidators.validatePassword(val);
                       return null;
                     },
 

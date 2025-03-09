@@ -110,12 +110,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(height: 20),
                         MainButton(
                           label: 'Update',
-                          onPress: () {
-                            Navigator.pushNamed(
-                              context,
-                              RoutesNames.editProfile,
-                            );
-                          },
+                          onPress: ()async {
+                        final result = await Navigator.pushNamed(
+                        context,
+                        RoutesNames.editProfile,
+                        arguments: user,
+                        );
+
+                        if (result == true) {
+
+                        if (mounted) {
+                          print('ProfileCubit is mounted');
+                          Future.delayed(const Duration(milliseconds: 300), () {
+                            context.read<ProfileCubit>().getProfile();
+                          });
+
+
+                          }}}
                         ),
                       ],
                     ),
@@ -123,6 +134,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 );
               }
             case ProfileError(message: final message):
+              print("meeeeeeeeeeeeeeeee$message");
               return Center(
                 child: Text(message, style: const TextStyle(color: Colors.red)),
               );

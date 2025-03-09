@@ -20,3 +20,12 @@ class ServerSideError implements Exception {
   ErrorModel? errorModel;
   ServerSideError(this.errorModel);
 }
+class NetworkException implements Exception {}
+
+class EmailAlreadyExistsException implements Exception {}
+
+class UserNotFoundException implements Exception {}
+
+class WeakPasswordException implements Exception {}
+
+class UpdateFailedError implements Exception {}
