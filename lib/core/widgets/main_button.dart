@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MainButton extends StatelessWidget {
-  const MainButton({super.key, required this.label, required this.onPress});
+   MainButton({super.key, required this.label, required this.onPress,this.backgroundColor});
 
  final String label ;
+ Color? backgroundColor;
 
   final Function() onPress;
   @override
@@ -16,11 +17,11 @@ class MainButton extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       child: ElevatedButton(
           onPressed: onPress,
-          child: Text(label,style:TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.white)),
           style: ButtonStyle(
-            backgroundColor: WidgetStatePropertyAll(Colors.grey),
+            backgroundColor: WidgetStatePropertyAll(backgroundColor?? Colors.grey),
             fixedSize: WidgetStatePropertyAll(Size.fromHeight(48))
-          )),
+          ),
+          child: Text(label,style:TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.white))),
     );
   }
 }

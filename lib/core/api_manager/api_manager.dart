@@ -11,6 +11,7 @@ import '../../features/explore_subjects/data/models/subject_response.dart';
 import '../../features/profile/data/models/change_password_request.dart';
 import '../../features/profile/data/models/profile_response_model.dart';
 import '../../features/profile/data/models/user_model.dart';
+import '../../features/questions_feature/data/models/questions_response.dart';
 
 part 'api_manager.g.dart';
 
@@ -39,4 +40,8 @@ abstract class RestClient {
 
     @Body() ChangePasswordRequest password,
   );
+  @GET("/questions")
+  Future<QuestionsResponse> getQuestions(
+      @Query("exam") String examId,
+      );
 }
