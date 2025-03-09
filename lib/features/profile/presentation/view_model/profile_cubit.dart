@@ -11,12 +11,11 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> getProfile() async {
     emit(ProfileLoading());
-    final result = await repository.getProfile();
-
-    if (result is ProfileSuccess) {
-      emit(ProfileSuccess(result.user));
-    } else if (result is ProfileError) {
-      emit(ProfileError(result.message));
+    try {
+      final result = await repository.getProfile();
+      emit(result);
+    } catch (e) {
+      emit(ProfileError(e.toString()));
     }
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/app_consts/app_validators.dart';
 import 'package:online_exam/features/profile/presentation/view_model/edit_profile_cubit.dart';
-
 import '../../../../../core/widgets/main_button.dart';
 import '../../../../../core/widgets/main_text_field.dart';
 import '../../../data/models/user_model.dart';
@@ -11,8 +10,8 @@ import '../../view_model/profile_cubit.dart';
 import '../../view_model/profile_state.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  EditProfileScreen({super.key});
-
+  EditProfileScreen({super.key, required this.user});
+  final UserModel user;
   static const String routeName = 'profile_edit_screen.dart';
 
   @override
@@ -20,30 +19,22 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
+  final _formKey = GlobalKey<FormState>();
+  late TextEditingController usernameController;
+  late TextEditingController firstNameController;
+  late TextEditingController lastNameController;
+  late TextEditingController emailController;
+  late TextEditingController phoneController;
 
-
-  final _formKey = GlobalKey<FormState>(); // Key for form validation
-
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-
-  late UserModel user;
   @override
   void initState() {
     super.initState();
-    final state = context.read<EditProfileCubit>().state;
-    if (state is EditProfileSuccess) {
-       user = state.user;
-      usernameController = TextEditingController(text: user.username);
-      firstNameController = TextEditingController(text: user.firstName);
-      lastNameController = TextEditingController(text: user.lastName);
-      emailController = TextEditingController(text: user.email);
-      phoneController = TextEditingController(text: user.phone);
-    }
+    UserModel user = widget.user;
+    usernameController = TextEditingController(text: user.username);
+    firstNameController = TextEditingController(text: user.firstName);
+    lastNameController = TextEditingController(text: user.lastName);
+    emailController = TextEditingController(text: user.email);
+    phoneController = TextEditingController(text: user.phone);
   }
 
   @override
@@ -52,21 +43,31 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       appBar: AppBar(title: Text("Edit Profile")),
       body: BlocListener<EditProfileCubit, EditProfileState>(
         listener: (context, state) {
-          switch(state){
-            
+          switch (state) {
             case EditProfileLoading():
-              CircularProgressIndicator();
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (context) => Center(child: CircularProgressIndicator()),
+              );
+              break;
             case EditProfileSuccess():
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Profile updated successfully!")));
-            Navigator.pop(context);
-            context.read<ProfileCubit>().getProfile();
+              Navigator.of(context, rootNavigator: true).pop();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Profile updated successfully!")),
+              );
+              Navigator.pop(context, true);
+              context.read<ProfileCubit>().getProfile();
+              break;
             case EditProfileError():
+              Navigator.of(context, rootNavigator: true).pop();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.message)),
               );
+              break;
           }
         },
-        child:  SingleChildScrollView(
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Form(
@@ -121,18 +122,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         label: 'Update',
                         onPress: () {
                           if (_formKey.currentState!.validate()) {
-
                             final updatedUser = UserModel(
-
-                            username: usernameController.text,
-                            firstName: firstNameController.text,
-                            lastName: lastNameController.text,
-                            email: emailController.text,
-                            phone: phoneController.text,
-
+                              username: usernameController.text,
+                              firstName: firstNameController.text,
+                              lastName: lastNameController.text,
+                              email: emailController.text,
+                              phone: phoneController.text,
                             );
-
-                            context.read<EditProfileCubit>().editProfile( updatedUser);
+                            context.read<EditProfileCubit>().editProfile(updatedUser);
                           }
                         },
                       );

@@ -12,6 +12,7 @@ import '../../features/exam_feature/presentation/views/exam_view.dart';
 import '../../features/exam_feature/presentation/views/exam_details.dart';
 import '../../features/exam_feature/presentation/views/exam_view.dart';
 import '../../features/layout/presentation/layout_view.dart';
+import '../../features/profile/data/models/user_model.dart';
 import '../../features/profile/domain/repository/profile_repository.dart';
 import '../../features/profile/presentation/view_model/change_password_cubit.dart';
 import '../../features/profile/presentation/view_model/edit_profile_cubit.dart';
@@ -40,12 +41,14 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ProfileScreen());
 
       case RoutesNames.editProfile:
-        return MaterialPageRoute(builder: (_) =>
-            BlocProvider(
-              create: (context) => EditProfileCubit(getIt<ProfileRepository>()),
-              child: EditProfileScreen(),
-            ));
-
+        final user = settings.arguments as UserModel;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => EditProfileCubit(getIt<ProfileRepository>()),
+            child: EditProfileScreen(user: user),
+          ),
+          settings: settings,
+        );
       case RoutesNames.changePassword:
         return MaterialPageRoute(builder: (_) =>
             BlocProvider(
