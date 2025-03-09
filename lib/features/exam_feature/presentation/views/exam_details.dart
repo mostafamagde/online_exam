@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:online_exam/core/routes_manager/routes_names.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../questions_feature/presentation/views/questions_screen.dart';
 
 class ExamDetails extends StatelessWidget {
   const ExamDetails({super.key});
@@ -11,7 +13,7 @@ class ExamDetails extends StatelessWidget {
     var arguments = ModalRoute.of(context)!.settings.arguments as List<String>;
     var theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(title: Text("Exam details")),
+      appBar: AppBar(title: Text(arguments[1])),
       body: Padding(
         padding: EdgeInsets.only(top: 10, left: 16, right: 16),
 
@@ -71,7 +73,9 @@ Lorem ipsum dolor sit amet consectetur.''',
             ),
             SizedBox(height: 50),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, RoutesNames.questionsView,arguments: arguments[0] );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Constants.primaryColor,
 

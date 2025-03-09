@@ -15,6 +15,7 @@ import '../../features/layout/presentation/layout_view.dart';
 import '../../features/profile/domain/repository/profile_repository.dart';
 import '../../features/profile/presentation/view_model/change_password_cubit.dart';
 import '../../features/profile/presentation/view_model/edit_profile_cubit.dart';
+import '../../features/questions_feature/presentation/views/questions_screen.dart';
 import '../di/di.dart';
 import '../../features/profile/presentation/view/Screens/change_password_screen.dart';
 import '../../features/profile/presentation/view/Screens/change_password_screen.dart';
@@ -55,6 +56,12 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder:
               (context) => ExamView(),
+          settings: settings,
+        );
+      case RoutesNames.questionsView:
+        return MaterialPageRoute(
+          builder:
+              (context) => QuestionsScreen(),
           settings: settings,
         );
 

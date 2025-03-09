@@ -42,6 +42,7 @@ dependencies:
   equatable: ^2.0.7
   retrofit: ^4.4.2
   retrofit_generator: ^9.1.9
+  timer_count_down: ^2.2.0
 
 
   logger: ^2.4.0  # for logging purpose
